@@ -1,12 +1,12 @@
 Vue = require 'vue'
 Router = require 'vue-router'
-{ domain, fromNow } = require './filters'
+{ domain, fromNow } = require '../../filters'
 
 
-App = require './components/App.vue'
-NewsView = require './components/NewsView.vue'
-ItemView = require './components/ItemView.vue'
-UserView = require './components/UserView.vue'
+App = require '../../components/App.vue'
+NewsView = require '../../components/NewsView.vue'
+ItemView = require '../../components/ItemView.vue'
+UserView = require '../../components/UserView.vue'
 
 # install router
 Vue.use Router

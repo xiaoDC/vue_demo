@@ -40,7 +40,8 @@ export default {
 </script>
 
 <style lang="stylus">
-@import "../variables.styl"
+@import "../public/variables.styl"
+
 .user-view
   color $gray
   li

@@ -59,7 +59,8 @@ export default {
 </script>
 
 <style lang="stylus">
-@import "../variables.styl"
+@import "../public/variables.styl"
+
 .item-view
   .item
     padding-left 0

@@ -12,9 +12,10 @@ topStoryIds = []
 module.exports = store
 
 
-api.child('topstories').on('value', (snapshot)->
-  topStoryIds = snapshot.val()
-  store.emit('topstories-updated')
+api.child('topstories')
+  .on 'value', (snapshot)->
+    topStoryIds = snapshot.val()
+    store.emit('topstories-updated')
 
 store.fetchItem = (id)->
   new Promise (resolve, reject)->
@@ -22,18 +23,17 @@ store.fetchItem = (id)->
       resolve(itemsCache[id])
     else
       api.child('item/' + id)
-      .once('value', (snapshot)->
+        .once 'value', (snapshot)->
           story = itemsCache[id] = snapshot.val()
           resolve(story)
-          return
-      , reject)
+        , reject
     return
 
 store.fetchItems = (ids)->
   if (not ids or not ids.length)
     Promise.resolve []
   else
-    Promise.all(ids.map (id)-> store.fetchItem(id)
+    Promise.all( ids.map (id)-> store.fetchItem(id) )
 
 
 store.fetchItemsByPage = (page)->
@@ -44,7 +44,9 @@ store.fetchItemsByPage = (page)->
 
 
 store.fetchUser = (id)->
-  new Promise( (resolve, reject)->
-    api.child('user/' + id).once('value', snapshot => {
-      resolve(snapshot.val())
-    , reject)
+  succeess = (resolve, reject) ->
+    api.child('user/' + id)
+      .once 'value', (snapshot) ->
+        resolve snapshot.val()
+
+  new Promise succeess, reject

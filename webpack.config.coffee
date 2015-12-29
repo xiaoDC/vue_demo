@@ -3,9 +3,9 @@ webpack = require('webpack')
 path = require('path')
 
 module.exports = {
-  # entry: './public/coffee/main.coffee'
+  entry: './public/coffee/main.coffee'
   output:
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'dist')
     # publicPath: '/static/'
     filename: '[name].js'
 
