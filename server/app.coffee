@@ -17,9 +17,12 @@ app.set('x-powered-by', false)
 
 
 app.use require('connect-timeout')('15s')
-app.use require('server-favicon')(path.join(__dirname, '../public/favicon.ico'))
+app.use require('serve-favicon')(path.join(__dirname, '../public/favicon.ico'))
 
 
 
 # 模板引擎
 app.set('view engine', 'jade')
+
+
+module.exports = app

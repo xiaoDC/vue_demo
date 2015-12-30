@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --inline --display-error-details",
+    "dev": "NODE_ENV=development DEBUG=express, nodemon index.coffee --ignore public/  --ignore node_modules/",
+    "pro": "NODE_ENV=production DEBUG=express,middleware nodemon index.coffee --ignore public/ --ignore test/  --ignore node_modules/",
+    "d": "webpack-dev-server --devtool eval --progress --colors --hot --inline --display-error-details",
     "build": "NODE_ENV=production webpack --progress"
   },
   "author": "",
